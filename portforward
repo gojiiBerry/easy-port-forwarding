@@ -24,3 +24,4 @@ if [ "$ans" == "yes" ];then
         echo "port forwarding  $PORT/$PROTOCOL "
                 sudo ufw allow $PORT/$PROTOCOL
                         sudo systemctl restart ufw
+fi
