@@ -1,0 +1,26 @@
+#!/bin/bash
+
+#this script is for port forwarding ufw
+
+read -p "What port?: "  PORT
+
+echo "you chose port $PORT "
+
+read -p "tcp or udp?: " PROTOCOL
+
+sudo ufw status
+
+read -p "proceed with port forwarding? "  ans
+
+if [ "$ans" == "no" ];then
+        read -p "What port?: "  PORT
+                echo "you chose port $PORT "
+                        read -p "tcp or udp?: " PROTOCOL
+                                sudo ufw status
+                                        read -p "proceed with port forwarding? "  ans
+fi
+
+if [ "$ans" == "yes" ];then
+        echo "port forwarding  $PORT/$PROTOCOL "
+                sudo ufw allow $PORT/$PROTOCOL
+                        sudo systemctl restart ufw
